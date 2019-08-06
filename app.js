@@ -18,7 +18,6 @@ app.use(expressXml());
 app.use(textMiddleware);
 app.use(loggerMiddleware);
 
-app.get("/*", handler);
-app.post("/*", handler);
+app.all("/*", handler);
 
 app.listen(listenPort, () => console.log(`Listening on port ${listenPort}!`));
