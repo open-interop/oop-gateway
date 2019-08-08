@@ -3,14 +3,14 @@ module.exports = function(req, res, next) {
         return next();
     }
 
-    if (!(req.headers["content-length"])) {
+    if (!req.headers["content-length"]) {
         return next();
     }
 
     var data = "";
 
-    req.setEncoding('utf-8');
-    req.on('data', chunk => {
+    req.setEncoding("utf-8");
+    req.on("data", chunk => {
         data += chunk;
     });
 

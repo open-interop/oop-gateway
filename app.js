@@ -1,15 +1,17 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
-const expressCsv = require('express-csv-middleware');
-const expressXml = require('express-xml-bodyparser');
+const expressCsv = require("express-csv-middleware");
+const expressXml = require("express-xml-bodyparser");
 const textMiddleware = require("./middleware");
 const handler = require("./handler");
+const blacklist = require("./blacklist");
 
 const { loggerMiddleware } = require("./logger");
 const { listenPort } = require("./config");
 
 const app = express();
 
+app.use(blacklist);
 app.use(fileUpload());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

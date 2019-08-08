@@ -8,7 +8,11 @@ const myWinstonOptions = {
 const logger = new winston.createLogger(myWinstonOptions);
 
 const middleware = function(req, res, next) {
-    logger.info(req.url);
+    logger.info(
+        `${new Date()}: Recieved request ${req.hostname} ${req.url} from ${
+            req.ip
+        }.`
+    );
     next();
 };
 

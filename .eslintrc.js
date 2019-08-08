@@ -11,7 +11,7 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 2018
     },
-    plugins: ["prettier", "jest"],
+    plugins: ["prettier", "ava"],
     rules: {
         indent: [1, 4],
         curly: ["error", "all"],
