@@ -2,6 +2,7 @@
   "name": "oop-gateway",
   "version": "0.0.1",
   "description": "Gateway endpoint for OpenInterop",
+  "license": "AGPL-3.0",
   "main": "app.js",
   "scripts": {
     "test": "ava",
