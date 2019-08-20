@@ -2,7 +2,15 @@ const { logger } = require("./logger");
 const { dbAddress } = require("./config");
 const nano = require("nano")(dbAddress);
 
-const blacklist = nano.db.use("blacklist");
+const blacklist = new Promise(resolve => {
+    nano.db.get("blacklist", res => {
+        if (res.status === 404) {
+            resolve(nano.db.create("blacklist"));
+        } else {
+            resolve(nano.db.use("blacklist"));
+        }
+    });
+});
 
 module.exports = function(req, res, next) {
     return searchBlacklist(req).then(result => {
@@ -31,9 +39,11 @@ var searchBlacklist = function(req) {
         ]
     };
 
-    return blacklist.find({
-        selector: selector,
-        limit: 1
+    return blacklist.then(db => {
+        return db.find({
+            selector: selector,
+            limit: 1
+        });
     });
 };
 
