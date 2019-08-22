@@ -1,6 +1,9 @@
 const amqp = require("amqplib");
 const { amqpAddress, exchangeName, routingKey } = require("./config");
 const { logger } = require("./logger");
+const uuidv4 = require("uuid/v4");
+
+const uuid = uuidv4;
 
 var handler = (req, res) => {
     var msg = getMessageFromRequest(req);
@@ -25,7 +28,10 @@ var queueRawMessage = async function(msg) {
     }
 
     try {
-        var json = JSON.stringify(msg);
+        var json = JSON.stringify({
+            uuid: uuid(),
+            message: msg
+        });
 
         if (!channel.publish(exchangeName, routingKey, Buffer.from(json))) {
             throw new Error(`Unable to publish message: ${json}`);
@@ -44,7 +50,10 @@ var getMessageFromRequest = function(req) {
         ip: req.ip,
         body: req.body,
         files: req.files,
-        headers: req.headers
+        headers: req.headers,
+        hostname: req.hostname,
+        port: req.port,
+        protocol: req.protocol
     };
 
     if (msg.files) {
