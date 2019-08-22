@@ -4,6 +4,17 @@ const { logger } = require("./logger");
 const uuidv4 = require("uuid/v4");
 
 const uuid = uuidv4;
+var connection;
+var channel;
+
+const reconnect = async () => {
+    connection = await amqp.connect(amqpAddress);
+    channel = await connection.createChannel();
+
+    return channel;
+};
+
+reconnect();
 
 var handler = (req, res) => {
     var msg = getMessageFromRequest(req);
@@ -18,27 +29,19 @@ var handler = (req, res) => {
 };
 
 var queueRawMessage = async function(msg) {
-    const connection = await amqp.connect(amqpAddress);
+    var ch = await channel;
 
-    try {
-        var channel = await connection.createChannel();
-    } catch (e) {
-        connection.close();
-        throw e;
+    if (!ch) {
+        ch = await reconnect();
     }
 
-    try {
-        var json = JSON.stringify({
-            uuid: uuid(),
-            message: msg
-        });
+    var json = JSON.stringify({
+        uuid: uuid(),
+        message: msg
+    });
 
-        if (!channel.publish(exchangeName, routingKey, Buffer.from(json))) {
-            throw new Error(`Unable to publish message: ${json}`);
-        }
-    } finally {
-        await channel.close();
-        await connection.close();
+    if (!ch.publish(exchangeName, routingKey, Buffer.from(json))) {
+        throw new Error(`Unable to publish message: ${json}`);
     }
 };
 
