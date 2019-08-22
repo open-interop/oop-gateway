@@ -1,6 +1,11 @@
 const winston = require("winston");
 
-const consoleTransport = new winston.transports.Console();
+const consoleTransport = new winston.transports.Console({
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+    )
+});
 const myWinstonOptions = {
     transports: [consoleTransport]
 };
@@ -8,11 +13,7 @@ const myWinstonOptions = {
 const logger = new winston.createLogger(myWinstonOptions);
 
 const middleware = function(req, res, next) {
-    logger.info(
-        `${new Date()}: Recieved request ${req.hostname} ${req.url} from ${
-            req.ip
-        }.`
-    );
+    logger.info(`Recieved request ${req.hostname} from ${req.ip}.`);
     next();
 };
 
