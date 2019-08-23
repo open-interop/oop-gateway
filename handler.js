@@ -1,5 +1,5 @@
 const amqp = require("amqplib");
-const { amqpAddress, exchangeName, routingKey } = require("./config");
+const config = require("./config");
 const { logger } = require("./logger");
 const uuidv4 = require("uuid/v4");
 
@@ -8,7 +8,7 @@ var connection;
 var channel;
 
 const reconnect = async () => {
-    connection = await amqp.connect(amqpAddress);
+    connection = await amqp.connect(config.amqpAddress);
     channel = await connection.createChannel();
 
     return channel;
@@ -40,7 +40,9 @@ var queueRawMessage = async function(msg) {
         message: msg
     });
 
-    if (!ch.publish(exchangeName, routingKey, Buffer.from(json))) {
+    if (
+        !ch.publish(config.exchangeName, config.rawMessageQ, Buffer.from(json))
+    ) {
         throw new Error(`Unable to publish message: ${json}`);
     }
 };
