@@ -4,7 +4,7 @@ const nano = require("nano")(dbAddress);
 
 const blacklist = new Promise(resolve => {
     nano.db.get("blacklist", res => {
-        if (res && res.status === 404) {
+        if (res && res.statusCode === 404) {
             resolve(nano.db.create("blacklist"));
         } else {
             resolve(nano.db.use("blacklist"));
