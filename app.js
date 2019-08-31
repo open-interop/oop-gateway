@@ -1,25 +1,7 @@
-const express = require("express");
-const fileUpload = require("express-fileupload");
-const expressCsv = require("express-csv-middleware");
-const expressXml = require("express-xml-bodyparser");
-const textMiddleware = require("./middleware");
-const handler = require("./handler");
-const blacklist = require("./blacklist");
+const oop = require("oop-node-common");
+const config = require("./config");
+const main = require("./main");
 
-const { loggerMiddleware } = require("./logger");
-const { listenPort } = require("./config");
+const MessageBroker = oop.MessageBroker;
 
-const app = express();
-
-app.use(blacklist);
-app.use(fileUpload());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(expressCsv());
-app.use(expressXml());
-app.use(textMiddleware);
-app.use(loggerMiddleware);
-
-app.all("/*", handler);
-
-app.listen(listenPort, () => console.log(`Listening on port ${listenPort}!`));
+main(new MessageBroker(config.amqpAddress), config, oop.logger);
