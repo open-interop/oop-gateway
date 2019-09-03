@@ -3498,6 +3498,13 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
+"oop-node-common@https://github.com/open-interop/oop-node-common#develop":
+  version "0.0.1"
+  resolved "https://github.com/open-interop/oop-node-common#9f227f2b234018d7d1742f81ab288825aa47ac3b"
+  dependencies:
+    amqplib "^0.5.5"
+    winston "^3.2.1"
+
 opencollective-postinstall@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
