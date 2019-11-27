@@ -10,13 +10,15 @@ If a request matches any item in the blacklist it will be discarded.
 
 ## Installation
 
-Simply run `yarn install` to install the dependencies.
+Simply run `yarn install` to install the node dependencies.
 
 The blacklist depends on [CouchDB](https://couchdb.apache.org/), installation instructions can be found [here](https://docs.couchdb.org/en/2.2.0/install/index.html).
 
 once everything is installed the service can be started with `yarn start`.
 
 ## Config
+
+Configuration is done via environment variables. Available options are:
 
 - `OOP_LISTEN_PORT`: The port the web server will listen on.
 - `OOP_AMQP_ADDRESS`: The address of the AMQP messaging service.
@@ -28,12 +30,11 @@ once everything is installed the service can be started with `yarn start`.
 
 `yarn test` to run the tests and generate a coverage report.
 
-# Contributing
+## Contributing
 
-For more information on how to contribute see [here](https://github.com/open-interop/oop-guidelines/blob/master/CONTRIBUTING.md).
-Please follow the OpenInterop [code of conduct](https://github.com/open-interop/oop-guidelines/blob/master/CODE_OF_CONDUCT.md) when interacting with this repository.
+We welcome help from the community, please read the [Contributing guide](https://github.com/open-interop/oop-guidelines/blob/master/CONTRIBUTING.md) and [Community guidelines](https://github.com/open-interop/oop-guidelines/blob/master/CODE_OF_CONDUCT.md).
 
-# Licence
+## Licence
 
 Copyright (C) 2019 Blue Frontier IT Ltd
 
