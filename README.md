@@ -16,7 +16,7 @@ The blacklist depends on [CouchDB](https://couchdb.apache.org/), installation in
 
 once everything is installed the service can be started with `yarn start`.
 
-## Config
+## Configuration
 
 Configuration is done via environment variables. Available options are:
 
@@ -26,7 +26,7 @@ Configuration is done via environment variables. Available options are:
 - `OOP_GATEWAY_OUTPUT_Q`: The name of the queue processed messages will be sent to.
 - `OOP_DB_ADDRESS`: The address of the blacklist database.
 
-## Tests
+## Testing
 
 `yarn test` to run the tests and generate a coverage report.
 
