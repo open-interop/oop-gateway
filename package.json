@@ -6,7 +6,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "ava",
+    "test": "nyc ava",
     "lint": "eslint --fix ./*.js ./lib/*.js",
     "test-lint": "eslint ./*.js ./lib/*.js"
   },
@@ -35,6 +35,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-standard": "^1.0.2",
     "husky": "^3.0.2",
+    "nyc": "^14.1.1",
     "prettier": "^1.18.2"
   },
   "husky": {

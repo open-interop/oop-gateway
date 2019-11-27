@@ -1,5 +1,40 @@
 # oop-gateway
 
+This is the gateway service for OpenInterop.
+
+This service serves as an HTTP entry point for OpenInterop.
+
+Once messages are received, this service checks them against a blacklist, and does some minimal processing before enqueueing the message.
+
+If a request matches any item in the blacklist it will be discarded.
+
+## Installation
+
+Simply run `yarn install` to install the dependencies.
+
+The blacklist depends on [CouchDB](https://couchdb.apache.org/), installation instructions can be found [here](https://docs.couchdb.org/en/2.2.0/install/index.html).
+
+once everything is installed the service can be started with `yarn start`.
+
+## Config
+
+- `OOP_LISTEN_PORT`: The port the web server will listen on.
+- `OOP_AMQP_ADDRESS`: The address of the AMQP messaging service.
+- `OOP_EXCHANGE_NAME`: The message exchange for OpenInterop.
+- `OOP_GATEWAY_OUTPUT_Q`: The name of the queue processed messages will be sent to.
+- `OOP_DB_ADDRESS`: The address of the blacklist database.
+
+## Tests
+
+`yarn test` to run the tests and generate a coverage report.
+
+# Contributing
+
+For more information on how to contribute see [here](https://github.com/open-interop/oop-guidelines/blob/master/CONTRIBUTING.md).
+Please follow the OpenInterop [code of conduct](https://github.com/open-interop/oop-guidelines/blob/master/CODE_OF_CONDUCT.md) when interacting with this repository.
+
+# Licence
+
 Copyright (C) 2019 Blue Frontier IT Ltd
 
 This program is free software: you can redistribute it and/or modify
