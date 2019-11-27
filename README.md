@@ -10,6 +10,10 @@ If a request matches any item in the blacklist it will be discarded.
 
 ## Installation
 
+Ensure node is installed with version at least `12.13.1` LTS.
+
+Install `yarn` if necessary (`npm install -g yarn`).
+
 Simply run `yarn install` to install the node dependencies.
 
 The blacklist depends on [CouchDB](https://couchdb.apache.org/), installation instructions can be found [here](https://docs.couchdb.org/en/2.2.0/install/index.html).
