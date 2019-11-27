@@ -14,7 +14,7 @@ Simply run `yarn install` to install the node dependencies.
 
 The blacklist depends on [CouchDB](https://couchdb.apache.org/), installation instructions can be found [here](https://docs.couchdb.org/en/2.2.0/install/index.html).
 
-once everything is installed the service can be started with `yarn start`.
+Once everything is installed the service can be started with `yarn start`.
 
 ## Configuration
 
