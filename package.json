@@ -1,0 +1,47 @@
+{
+  "name": "oop-gateway",
+  "version": "1.0.0",
+  "description": "Gateway endpoint for OpenInterop",
+  "license": "AGPL-3.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "nyc ava",
+    "lint": "eslint --fix ./*.js ./lib/*.js",
+    "test-lint": "eslint ./*.js ./lib/*.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-csv-middleware": "^0.1.0",
+    "express-fileupload": "^1.1.5",
+    "express-xml-bodyparser": "^0.3.0",
+    "nano": "^8.1.0",
+    "oop-node-common": "https://github.com/open-interop/oop-node-common#develop",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^8.1.0",
+    "ava": "^2.2.0",
+    "commitlint": "^8.1.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-ava": "^7.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-standard": "^1.0.2",
+    "husky": "^3.0.2",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "commit-lint": "yarn lint"
+    }
+  }
+}
