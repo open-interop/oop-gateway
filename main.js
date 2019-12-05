@@ -12,7 +12,9 @@ module.exports = (broker, config, logger) => {
 
     app.use(blacklist(config, logger));
     app.use(fileUpload());
-    app.use(express.json());
+    app.use(
+        express.json({ type: ["application/json", "application/fhir+json"] })
+    );
     app.use(express.urlencoded({ extended: true }));
     app.use(expressCsv());
     app.use(expressXml());
