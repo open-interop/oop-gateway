@@ -1,6 +1,6 @@
 {
   "name": "oop-gateway",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gateway endpoint for OpenInterop",
   "license": "AGPL-3.0",
   "main": "app.js",
@@ -17,7 +17,7 @@
     "express-fileupload": "^1.1.6",
     "express-xml-bodyparser": "^0.3.0",
     "nano": "^8.1.0",
-    "oop-node-common": "^1.0.1",
+    "oop-node-common": "1.0.2",
     "uuid": "^3.4.0"
   },
   "devDependencies": {
