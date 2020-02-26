@@ -1,6 +1,6 @@
 {
   "name": "oop-gateway",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Gateway endpoint for OpenInterop",
   "license": "AGPL-3.0",
   "main": "app.js",
