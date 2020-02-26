@@ -10,7 +10,10 @@ const blacklist = require("./lib/blacklist");
 module.exports = (broker, config, logger) => {
     const app = express();
 
-    app.use(blacklist(config, logger));
+    if (config.dbAddress) {
+        app.use(blacklist(config, logger));
+    }
+
     app.use(fileUpload());
     app.use(
         express.json({ type: ["application/json", "application/fhir+json"] })
