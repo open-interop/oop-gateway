@@ -10,7 +10,7 @@ const blacklist = require("./lib/blacklist");
 module.exports = (broker, config, logger) => {
     const app = express();
 
-    if (config.dbAddress) {
+    if (config.blacklistAddress) {
         app.use(blacklist(config, logger));
     }
 
