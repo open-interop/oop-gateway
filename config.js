@@ -5,5 +5,5 @@ module.exports = new oop.Config({
     amqpAddress: "OOP_AMQP_ADDRESS",
     exchangeName: "OOP_EXCHANGE_NAME",
     gatewayOutputQ: "OOP_GATEWAY_OUTPUT_Q",
-    blacklistAddress: "OOP_BLACKLIST_SOCKET_ADDRESS"
+    blacklistAddress: { name: "OOP_BLACKLIST_SOCKET_ADDRESS", optional: true }
 });
