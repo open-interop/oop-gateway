@@ -10,7 +10,12 @@ const blacklist = require("./lib/blacklist");
 module.exports = (broker, config, logger) => {
     const app = express();
 
-    if (config.dbAddress) {
+    app.use((req, res, next) => {
+        logger.info(`Received request ${req.hostname} from ${req.ip}.`);
+        next();
+    });
+
+    if (config.blacklistAddress) {
         app.use(blacklist(config, logger));
     }
 
@@ -22,7 +27,6 @@ module.exports = (broker, config, logger) => {
     app.use(expressCsv());
     app.use(expressXml());
     app.use(textMiddleware);
-    app.use(logger.middleware);
 
     app.all("/*", handler(broker, config, logger));
 
