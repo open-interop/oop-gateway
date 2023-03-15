@@ -1,4 +1,4 @@
-FROM node:10.18.1
+FROM node:lts-alpine
 
 LABEL maintainer="daniel.young@bluefrontier.co.uk"
 
